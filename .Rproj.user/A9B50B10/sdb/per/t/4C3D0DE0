@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(shinydashboard)\nlibrary(leaflet)\n\nheader <- dashboardHeader(\n  title = \"Twin Cities Buses\"\n)\n\nbody <- dashboardBody(\n  fluidRow(\n    column(width = 9,\n      box(width = NULL, solidHeader = TRUE,\n        leafletOutput(\"busmap\", height = 500)\n      ),\n      box(width = NULL,\n        uiOutput(\"numVehiclesTable\")\n      )\n    ),\n    column(width = 3,\n      box(width = NULL, status = \"warning\",\n        uiOutput(\"routeSelect\"),\n        checkboxGroupInput(\"directions\", \"Show\",\n          choices = c(\n            Northbound = 4,\n            Southbound = 1,\n            Eastbound = 2,\n            Westbound = 3\n          ),\n          selected = c(1, 2, 3, 4)\n        ),\n        p(\n          class = \"text-muted\",\n          paste(\"Note: a route number can have several different trips, each\",\n                \"with a different path. Only the most commonly-used path will\",\n                \"be displayed on the map.\"\n          )\n        ),\n        actionButton(\"zoomButton\", \"Zoom to fit buses\")\n      ),\n      box(width = NULL, status = \"warning\",\n        selectInput(\"interval\", \"Refresh interval\",\n          choices = c(\n            \"30 seconds\" = 30,\n            \"1 minute\" = 60,\n            \"2 minutes\" = 120,\n            \"5 minutes\" = 300,\n            \"10 minutes\" = 600\n          ),\n          selected = \"60\"\n        ),\n        uiOutput(\"timeSinceLastUpdate\"),\n        actionButton(\"refresh\", \"Refresh now\"),\n        p(class = \"text-muted\",\n          br(),\n          \"Source data updates every 30 seconds.\"\n        )\n      )\n    )\n  )\n)\n\ndashboardPage(\n  header,\n  dashboardSidebar(disable = TRUE),\n  body\n)\n",
+    "created" : 1477109809662.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2900028014",
+    "id" : "4C3D0DE0",
+    "lastKnownWriteTime" : 1477110556,
+    "last_content_update" : 1477110556783,
+    "path" : "~/Documents/Github/findHome/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
