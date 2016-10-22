@@ -1,6 +1,11 @@
 app.config(['$routeProvider', function($routeProvider){
     $routeProvider
         .when('/', {
-            //controller: 'homePageController'
+            templateUrl: "partials/index.hbs",
+            controller: "homePageController"
+        })
+        .when('/signup', {
+            templateUrl: "partials/signup.hbs",
+            controller: "signUpController"
         })
 }]);
