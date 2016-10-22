@@ -1,4 +1,4 @@
-var app = angular.module('findHomeApp');
+var app = angular.module('findHomeApp', ["ngRoute"]);
 
 app.config(function($interpolateProvider){
     $interpolateProvider.startSymbol('{[{');
