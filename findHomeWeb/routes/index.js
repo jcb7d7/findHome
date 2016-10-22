@@ -6,13 +6,9 @@ router.get('/', function(req, res, next) {
   res.render('user');
 });
 
-router.get('/signup', function (req, res) {
-    console.log("signup route called");
-    res.send({title: "Hello from sign up route!"});
+router.post('/dashboard', function (req, res) {
+    //console.log(req);
+    res.send({title: "Good"});
 });
 
-router.post('/authLogin', function (req, res) {
-    console.log("authLogin called");
-    res.redirect('#/user')
-});
 module.exports = router;
