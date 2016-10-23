@@ -19,6 +19,4 @@ app.controller('homePageController', ['$scope' , '$http', '$location', function 
                 $location.path("/dashboard");
             })
     };
-
-
 }]);
