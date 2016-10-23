@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Humanitarian Resources </title>
 </head>
-<body onload="genPage()">
+<body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -29,26 +29,37 @@
 </nav>
 
 <div class="container">
-    <div class="row"> <h2>St. Patrick's Center</h2></div>
+    <div class="row"> <h2>YMCA-Metro St. Louis</h2></div>
     <div class="row">
         <div class="col-md-8">
             <br/><br/>
             <form method="post" action="/dashboard" id="url_form">
-                <table class="table table-hover" id="orgTable">
+                <table class="table table-hover" id="orgTable" onload="getData()">
                     <thead>
                     <th>Resource</th>
                     <th>Description</th>
-                    <th>Qty Availible</th>
+                    <th>Qty Available</th>
                     <th>Qty Total</th>
                     <th>&#43; &#47; &#45;</th>
                     </thead>
+                    <tr ng-repeat="resource in results">
+                        <td> <input type="text" value={[{resource.Type}]} /></td>
+                        <td> <input type="text" value={[{resource.Description}]} /> </td>
+                        <td> <input type="text" value={[{resource.NumUsed}]} /> </td>
+                        <td> <input type="text" value={[{resource.NumTotal}]} /> </td>
+                        <td> <button ng-click="removeRow()" class="btn btn-danger">remove</button></td>
+                    </tr>
+                    <tr>
+                        <td> <input type="text" /></td>
+                        <td> <input type="text" /> </td>
+                        <td> <input type="text" /> </td>
+                        <td> <input type="text" /> </td>
+                        <td> <button ng-click="removeRow()" class="btn btn-success">add</button></td>
+                    </tr>
                 </table>
             </form>
-        <button ng-click="getData()">Press me!</button>
-        <!--{[{results}]}</br>-->
-        <div ng-repeat="facility in results">
-            {[{facility.Name}]} " " {[{facility.HouseNum}]}
-        </div>
+            <button ng-click="getData()">Cancel Changes</button>
+            <button ng-click="getData()">Save Values</button>
     </div>
 </div>
 

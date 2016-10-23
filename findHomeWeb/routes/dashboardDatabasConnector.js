@@ -10,18 +10,28 @@ exports.getDataForDashboard = function (next) {
     });
 
     var result = {};
+    var org = {};
 
     connection.connect();
 
 
-    connection.query("Select * from Facilities", function (err, rows) {
+    connection.query("Select Type, Description, NumTotal, NumUsed from globalhack.Resources where Facility=6",
+        function (err, rows) {
         if (err) console.log("Bad connection");
         console.log("Good connection");
         for(var i = 0; i < rows.length; i++) {
             result[i] = rows[i];
         }
         // console.log(result);
-        connection.end();
+        //connection.end();
         next(result);
     });
+
+   /* connection.query("select Name from globalhack.Resources where ID=6", function (err, rows) {
+        if (err) console.log("Bad connection");
+        console.log("good connection");
+        org = rows[i];
+        connection.end();
+        next(result);
+    });*/
 };
