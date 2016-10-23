@@ -9,8 +9,8 @@
 <body ng-controller="homePageController">
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
+        <nav class="navbar navbar-inverse" style="border: none">
+            <div class="container-fluid" >
                     <button ng-click="signup()" class="btn btn-primary">Area at a Glance</button>
                     <button ng-click="signup()" class="btn btn-primary">About</button>
                     <button ng-click="signup()" class="btn btn-primary">Services</button>
@@ -58,13 +58,13 @@
                 <br/>
             </ol>
             <form class="form-inline">
-                <h3> Sign In</h3>
+                <h3> Sign Up</h3>
                 <div class="form-group">
                     <label for="email">Email: </label>
                     <input type="email" class="form-control" id="email">
                 </div>
                 <div class="form-group">
-                    <label for="pwd">Password:</label>
+                    <label for="pwd">Organization:</label>
                     <input type="password" class="form-control" id="pwd">
                 </div>
                 <button ng-click="goToSignUpPage()" class="btn btn-default">Submit</button>
