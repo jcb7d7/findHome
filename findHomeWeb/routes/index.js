@@ -11,6 +11,13 @@ router.post('/dashboard', function (req, res) {
     res.send({title: "Good"});
 });
 
+var dashboardUpdater = require("./dashboardUpdate");
+router.post('/updateResources', function(req, res) {
+    dashboardUpdater.updateResourceConnection(req.body, function (result) {
+        console.log("update resources");
+        res.send(result);
+    });
+});
 var databaseConnector = require("./dashboardDatabasConnector");
 router.get('/facilities', function (req, res, next) {
     databaseConnector.getDataForDashboard(function (result) {

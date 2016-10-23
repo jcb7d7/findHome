@@ -10,20 +10,21 @@ exports.getDataForDashboard = function (next) {
     });
 
     var result = {};
-    var org = {};
+    //$scope.res = {Facility: '', Type: '', Description: '',
+      //  NumTotal: '', NumUsed: ''};
 
     connection.connect();
 
 
-    connection.query("Select Type, Description, NumTotal, NumUsed from globalhack.Resources where Facility=6",
+    connection.query("Select Type, Description, NumTotal, NumUsed from Resources where Facility=6",
         function (err, rows) {
         if (err) console.log("Bad connection");
         console.log("Good connection");
         for(var i = 0; i < rows.length; i++) {
             result[i] = rows[i];
         }
-        // console.log(result);
-        //connection.end();
+         console.log(result);
+        connection.end();
         next(result);
     });
 
