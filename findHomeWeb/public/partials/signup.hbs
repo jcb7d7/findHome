@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Humanitarian Resources </title>
 </head>
-<body ng-controller="signUpController">
+<body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -19,11 +19,10 @@
         </div>
         <div class="collapse navbar-collapse" id="collapse-links">
             <div class="btn-group nav navbar-nav">
-                <button ng-click="signup()" class="btn btn-primary">Area at a Glance</button>
-                <button ng-click="signup()" class="btn btn-primary">About</button>
-                <button ng-click="signup()" class="btn btn-primary">Services</button>
-                <button ng-click="signup()" class="btn btn-primary">Contact</button>
-                <button ng-click="signup()" class="btn btn-primary">Sign Up</button>
+                <button ng-click="" class="btn btn-primary">Area at a Glance</button>
+                <button ng-click="" class="btn btn-primary">About</button>
+                <button ng-click="" class="btn btn-primary">Services</button>
+                <button ng-click="" class="btn btn-primary">Contact</button>
             </div>
         </div>
     </div>
@@ -31,37 +30,25 @@
 <div class="container">
     <div class="row" >
         <div class="col-md-8">
-            <form action="/signup" method="post">
+            <form>
                 <h3> Sign Up</h3>
                 <div class="form-group">
                     <label for="name">Name: </label>
                     <input type="text" class="form-control" id="name">
                 </div>
                 <div class="form-group">
-                    <label for="email">Email: </label>
-                    <input type="email" class="form-control" id="email">
+                    <label for="phnumber">Phone Number: </label>
+                    <input type="text" class="form-control" id="phnumber">
                 </div>
                 <div class="form-group">
                     <label for="email">Email: </label>
                     <input type="email" class="form-control" id="email">
                 </div>
                 <div class="form-group">
-                    <label for="email">Email: </label>
-                    <input type="email" class="form-control" id="email">
+                    <label for="description">Additional Info (What services you can provide): </label>
+                    <input type="text" class="form-control" id="description">
                 </div>
-                <div class="form-group">
-                    <label for="email">Email: </label>
-                    <input type="email" class="form-control" id="email">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email: </label>
-                    <input type="email" class="form-control" id="email">
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd">
-                </div>
-                <button ng-click="goToSignUpPage()" class="btn btn-default">Submit</button>
+                <button ng-click="submitSignUpInfo()" class="btn btn-default">Submit</button>
             </form>
         </div>
     </div>
