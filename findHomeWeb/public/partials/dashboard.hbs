@@ -44,11 +44,12 @@
                     </thead>
                 </table>
             </form>
-        <button ng-click="getData()">Press me!</button>
-        <!--{[{results}]}</br>-->
-        <div ng-repeat="facility in results">
-            {[{facility.Name}]} " " {[{facility.HouseNum}]}
         </div>
+
+    </div>
+    <button ng-click="getData()">Press me!</button>
+    <div ng-repeat="facility in results">
+        {[{facility.Name}]} " " {[{facility.HouseNum}]}
     </div>
 </div>
 

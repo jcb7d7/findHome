@@ -7,17 +7,24 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/dashboard', function (req, res) {
-    //console.log(req);
     res.send({title: "Good"});
+    // res.redirect('/#/dashboard');
+});
+
+var providerSubmitter = require('./signUpDatabaseConnector');
+router.post('/submitNewProvider', function (req, res) {
+    providerSubmitter.signUpNewProvider(req.body, function (result) {
+        console.log("Submit new provider");
+        res.send({code: 200});
+        // res.send(result);
+    })
 });
 
 var databaseConnector = require("./dashboardDatabasConnector");
 router.get('/facilities', function (req, res, next) {
     databaseConnector.getDataForDashboard(function (result) {
-        // console.log("in database promise" + JSON.stringify(result));
         res.send(result);
     });
-    // res.send(databaseConnector.getDataForDashboard());
 });
 
 module.exports = router;
