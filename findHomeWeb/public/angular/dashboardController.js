@@ -1,4 +1,4 @@
-app.controller('dashboardController', ['$scope', '$http', function ($scope, $http) {
+app.controller('dashboardController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
 
     $scope.org;
     $scope.resourceName;
@@ -29,6 +29,10 @@ app.controller('dashboardController', ['$scope', '$http', function ($scope, $htt
             $scope.results = result.data;
             //console.log($scope.results);
         })
+    };
+
+    $scope.clientService = function () {
+        $location.path("/clientServices");
     };
 
     getData();

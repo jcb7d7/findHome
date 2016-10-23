@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse" id="collapse-links">
             <div class="btn-group nav navbar-nav">
                 <button ng-click="signup()" class="btn btn-success">My Resources</button>
-                <button ng-click="signup()" class="btn btn-success">Client Services</button>
+                <button ng-click="clientService()" class="btn btn-success">Client Services</button>
                 <button ng-click="signup()" class="btn btn-success">Availible Resources</button>
                 <button ng-click="signup()" class="btn btn-success">Organizations</button>
                 <button ng-click="signup()" class="btn btn-success">Events</button>
@@ -63,85 +63,5 @@
             <button ng-click="updateData(results)">Save Values</button>
     </div>
 </div>
-
-<script>
-    function genPage() { // create initial page
-        var form = document.getElementById("url_form");
-        createLink(form); // generate text field input and add button
-        addBreak(form);
-        addSubmit(form); // add submit button
-    }
-    function addURL() { // action taken to add a URL
-        var form = document.getElementById("url_form");
-        var brk = document.getElementById("bre");
-        form.removeChild(document.getElementById("submit")); // remove submit button
-        form.removeChild(brk);
-        var div = form.lastElementChild; // get last element in form
-        removeAddButton(div); // remove that elements add button
-        addRemoveButton(div); // add a remove button
-        createLink(form);
-        addBreak(form);
-        addSubmit(form);
-    }
-    function createLink(form) { // generate div containing text input and add button
-        var linkDiv = document.createElement("div");
-        linkDiv.setAttribute("id", "url_button_pair");
-        linkDiv = createURLInput(linkDiv);
-        linkDiv = addAddButton(linkDiv);
-        form.appendChild(linkDiv);
-    }
-    function removeAddButton(linkDiv) { // remove add button from given div
-        var addButton = linkDiv.lastElementChild;
-        linkDiv.removeChild(addButton);
-        return linkDiv;
-    }
-    function addBreak(form) { // append a line break to a form
-        var brk = document.createElement("div");
-        brk.setAttribute("id", "bre");
-        form.appendChild(brk);
-    }
-    function addAddButton(linkDiv) { // add and add URL button to div
-        var form = document.getElementById("url_form");
-        var addButton = document.createElement("input");
-        addButton.setAttribute("type", "button");
-        addButton.setAttribute("name", "add_url");
-        addButton.setAttribute("value", " + ");
-        addButton.setAttribute("id", "add");
-        addButton.setAttribute("class", "add");
-        addButton.addEventListener("click", addURL);
-        linkDiv.appendChild(addButton);
-        return linkDiv;
-    }
-    function addSubmit(form) { // add submit button to form
-        var submitButton = document.createElement("input");
-        submitButton.setAttribute("type", "submit");
-        submitButton.setAttribute("value", "Submit");
-        submitButton.setAttribute("id", "submit");
-        form.appendChild(submitButton);
-    }
-    function createURLInput(linkDiv) { // add text input to div
-        var newURL = document.createElement("input");
-        newURL.setAttribute("type", "text");
-        newURL.setAttribute("name", "url_list");
-        newURL.setAttribute("id", "url_list");
-        newURL.setAttribute("placeholder", "enter URL");
-        newURL.setAttribute("size", "45");
-        linkDiv.appendChild(newURL);
-        return linkDiv;
-    }
-    function addRemoveButton(linkDiv) { // add remove button to div
-        var removeButton = document.createElement("input");
-        removeButton.setAttribute("type", "button");
-        removeButton.setAttribute("name", "remove_url");
-        removeButton.setAttribute("value", " - ");
-        removeButton.setAttribute("class", "remove");
-        removeButton.addEventListener("click", removeURL);
-        linkDiv.appendChild(removeButton);
-        return linkDiv;
-    }
-    function removeURL() { // action taken when remove button is pressed
-        this.parentNode.parentNode.removeChild(this.parentNode);
-    }
-</script>
 </body>
 </html>
