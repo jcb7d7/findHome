@@ -8,4 +8,7 @@ app.config(['$routeProvider', function($routeProvider){
             templateUrl: "partials/dashboard.hbs",
             controller: "signUpController"
         })
+        .when('/signup', {
+            templateUrl: "partials/signup.hbs"
+        })
 }]);

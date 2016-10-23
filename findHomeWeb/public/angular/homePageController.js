@@ -1,6 +1,9 @@
 app.controller('homePageController', ['$scope' , '$http', '$location', function ($scope, $http, $location) {
     $scope.message = "Got to the home page!";
 
+    $scope.signup = function () {
+        $location.path("/signup");
+    };
 
     $scope.goToSignUpPage = function () {
         var config = {

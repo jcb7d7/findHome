@@ -16,30 +16,35 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">St. Patrick's Center</a>
         </div>
         <div class="collapse navbar-collapse" id="collapse-links">
-            <ul class="nav navbar-nav">
-                <li> <a href="#">Resources</a> </li>
-                <li> <a href="#">Organizations</a>  </li>
-            </ul>
+            <div class="btn-group nav navbar-nav">
+                <button ng-click="signup()" class="btn btn-success">My Resources</button>
+                <button ng-click="signup()" class="btn btn-success">Availible Resources</button>
+                <button ng-click="signup()" class="btn btn-success">Organizations</button>
+                <button ng-click="signup()" class="btn btn-success">Events</button>
+            </div>
         </div>
     </div>
 </nav>
 
 <div class="container">
-    <div class="col-md-8">
-        <br/><br/>
-        <form method="post" action="/dashboard" id="url_form">
-            <table class="table table-hover" id="orgTable">
-                <thead>
-                <th>Resource</th>
-                <th>Description</th>
-                <th>Qty Availible</th>
-                <th>Qty Total</th>
-                </thead>
-            </table>
-        </form>
+    <div class="row"> <h2>St. Patrick's Center</h2></div>
+    <div class="row">
+        <div class="col-md-8">
+            <br/><br/>
+            <form method="post" action="/dashboard" id="url_form">
+                <table class="table table-hover" id="orgTable">
+                    <thead>
+                    <th>Resource</th>
+                    <th>Description</th>
+                    <th>Qty Availible</th>
+                    <th>Qty Total</th>
+                    <th>&#43; &#47; &#45;</th>
+                    </thead>
+                </table>
+            </form>
+        </div>
     </div>
 </div>
 
