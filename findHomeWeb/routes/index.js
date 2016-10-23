@@ -11,4 +11,13 @@ router.post('/dashboard', function (req, res) {
     res.send({title: "Good"});
 });
 
+var databaseConnector = require("./dashboardDatabasConnector");
+router.get('/facilities', function (req, res, next) {
+    databaseConnector.getDataForDashboard(function (result) {
+        // console.log("in database promise" + JSON.stringify(result));
+        res.send(result);
+    });
+    // res.send(databaseConnector.getDataForDashboard());
+});
+
 module.exports = router;

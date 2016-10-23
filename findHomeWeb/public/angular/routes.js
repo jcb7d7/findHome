@@ -6,7 +6,7 @@ app.config(['$routeProvider', function($routeProvider){
         })
         .when('/dashboard', {
             templateUrl: "partials/dashboard.hbs",
-            controller: "signUpController"
+            controller: "dashboardController"
         })
         .when('/signup', {
             templateUrl: "partials/signup.hbs"
