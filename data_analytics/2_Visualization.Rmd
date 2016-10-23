@@ -1,0 +1,92 @@
+---
+title: "2_Visualization"
+author: "Kyu Cho"
+date: "October 22, 2016"
+output: html_document
+---
+
+
+# Data list
+Client.csv  
+Disabilities.csv  
+EmploymentEducation.csv  
+Enrollment.csv  
+Exit.csv  
+HealthAndDv.csv  
+IncomeBenefits.csv  
+Services.csv  
+
+# Load Data
+```{r cache=T}
+setwd("C:/Users/Kyu/Google Drive/Hackathon/data")
+
+Client <- read.csv("Client_Cleaned.csv")
+Disabilities <- read.csv("Disabilities_Cleaned.csv")
+EmploymentEducation <- read.csv("EmploymentEducation_Cleaned.csv")
+Enrollment <- read.csv("Enrollment_Cleaned.csv")
+Exit <- read.csv("Exit_Cleaned.csv")
+HealthAndDV <- read.csv("HealthAndDV_Cleaned.csv")
+IncomeBenefits <- read.csv("IncomeBenefits_Cleaned.csv")
+Services <- read.csv("Services_Cleaned.csv")
+```
+
+
+
+# Merging Data
+```{r cache=T}
+str(Client)
+sapply(Client, function(x){sum(is.na(x))/length(x)})*100
+
+str(Disabilities)
+sapply(Disabilities, function(x){sum(is.na(x))/length(x)})*100
+
+str(EmploymentEducation)
+sapply(EmploymentEducation, function(x){sum(is.na(x))/length(x)})*100
+
+str(Enrollment)
+sapply(Enrollment, function(x){sum(is.na(x))/length(x)})*100
+
+str(Exit)
+sapply(Exit, function(x){sum(is.na(x))/length(x)})*100
+
+str(HealthAndDV)
+sapply(HealthAndDV, function(x){sum(is.na(x))/length(x)})*100
+
+str(IncomeBenefits)
+sapply(IncomeBenefits, function(x){sum(is.na(x))/length(x)})*100
+
+str(Services)
+sapply(Services, function(x){sum(is.na(x))/length(x)})*100
+
+```
+
+
+```{r cache=T, message=FALSE, warning=FALSE}
+# Geo Map
+library(maps)
+library(ggmap)
+library(dplyr)
+
+# Load a map of STL into R:
+STL <- get_map(location="Saint Louis", zoom=11)
+LatLonCounts <- as.data.frame(table(round(Enrollment$longitude,2), round(Enrollment$latitude,2)))
+LatLonCounts$Long <- as.numeric(as.character(LatLonCounts$Var1))
+LatLonCounts$Lat <- as.numeric(as.character(LatLonCounts$Var2))
+
+g1 <- ggmap(STL) +
+    geom_point(data=LatLonCounts, aes(x=Long, y=Lat, color=Freq, size=Freq)) +
+    scale_colour_gradient(low="yellow", high="red")
+g1
+
+g2 <- ggmap(STL) +
+    stat_density2d(data=Enrollment, aes(x=longitude, y=latitude, fill=..level..), geom="polygon", alpha=0.2) +
+    scale_fill_gradient(low="yellow", high="red")
+g2
+
+# top 10 zipcodes with most homeless people
+top10_zip <- Enrollment %>% 
+    group_by(LastPermanentZIP) %>% 
+    count() %>% 
+    top_n(10, n) %>% 
+    arrange(-n)
+```
